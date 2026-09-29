@@ -17,6 +17,62 @@ conexion.commit()
 
 # conexion.commit()
 
-cursor.execute("SELECT * FROM tareas")
-resultados = cursor.fetchall()
-print(resultados)
+# cursor.execute("SELECT * FROM tareas")
+# resultados = cursor.fetchall()
+# print(resultados)
+
+
+def agregar_tarea(tarea):
+    cursor.execute(
+        "INSERT INTO tareas (descripcion, hecha) VALUES (?, ?)", (tarea, 0))
+    conexion.commit()
+
+
+# agregar_tarea("Comprar pan")
+
+def ver_tareas():
+    cursor.execute(
+        "SELECT * FROM tareas")
+    resultados = cursor.fetchall()
+    print(resultados)
+
+
+# ver_tareas()
+
+
+def marcar_hecha(id):
+    cursor.execute("UPDATE tareas SET hecha = 1 WHERE id = ?", (id,))
+    conexion.commit()
+
+
+# marcar_hecha(2)
+
+
+def borrar_tarea(id):
+    cursor.execute("DELETE FROM tareas WHERE id = ?", (id,))
+    conexion.commit()
+
+
+# borrar_tarea(1)
+
+x = ""
+while x != "salir":
+    print("1. Agregar tareas", "2. Ver tareas",
+          "3. Marcar como hecha", "4. Borrar tarea", "5. Salir")
+    x = input("Que necesita hacer? ")
+
+    if x.lower() == "salir":
+        break
+    elif x == "1":
+        y = input("Que tarea le gustaria agregar: ")
+        agregar_tarea(y)
+    elif x == "2":
+        ver_tareas()
+    elif x == "3":
+        l = int(input("Que tarea quiere marcar como hecha: "))
+        marcar_hecha(l)
+    elif x == "4":
+        d = int(input("Que tarea borramos? "))
+        borrar_tarea(d)
+    else:
+        print("Esa no es una tarea")
