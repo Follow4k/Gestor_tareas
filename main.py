@@ -34,6 +34,7 @@ def ver_tareas():
     cursor.execute(
         "SELECT * FROM tareas")
     resultados = cursor.fetchall()
+    for resultado in
     print(resultados)
 
 
