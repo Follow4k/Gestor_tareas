@@ -20,3 +20,6 @@ python3 main.py
 
 - Python
 - SQLite3
+
+
+## Modificado ultima vez 01/10
