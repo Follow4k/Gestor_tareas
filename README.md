@@ -22,4 +22,4 @@ python3 main.py
 - SQLite3
 
 
-## Modificado ultima vez 01/10
+## Modificado ultima vez 02/10
