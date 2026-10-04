@@ -27,7 +27,7 @@ def agregar_tarea(tarea):
         "INSERT INTO tareas (descripcion, hecha) VALUES (?, ?)", (tarea, 0))
     conexion.commit()
 
-#ssss
+#Actualizado
 # agregar_tarea("Comprar pan")
 
 def ver_tareas():
