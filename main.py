@@ -27,7 +27,7 @@ def agregar_tarea(tarea):
         "INSERT INTO tareas (descripcion, hecha) VALUES (?, ?)", (tarea, 0))
     conexion.commit()
 
-#Actualizado
+#Actualizado x2
 # agregar_tarea("Comprar pan")
 
 def ver_tareas():
@@ -35,7 +35,7 @@ def ver_tareas():
         "SELECT * FROM tareas")
     resultados = cursor.fetchall()
     print(resultados)
-
+#Hacer mas lindo el print de ver_tareas
 
 # ver_tareas()
 
