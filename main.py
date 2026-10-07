@@ -35,7 +35,7 @@ def ver_tareas():
         "SELECT * FROM tareas")
     resultados = cursor.fetchall()
     print(resultados)
-#Hacer mas lindo el print de ver_tareas
+#Hacer mas prolijo el print de ver_tareas
 
 # ver_tareas()
 
