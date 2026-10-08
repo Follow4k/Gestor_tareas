@@ -46,7 +46,7 @@ def marcar_hecha(id):
 
 
 # marcar_hecha(2)
-
+# Nada relevante
 
 def borrar_tarea(id):
     cursor.execute("DELETE FROM tareas WHERE id = ?", (id,))
