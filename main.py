@@ -57,10 +57,16 @@ while True:
     elif x == "2":
         ver_tareas()
     elif x == "3":
-        l = int(input("Que tarea quiere marcar como hecha: "))
-        marcar_hecha(l)
+        try:
+            l = int(input("Que tarea quiere marcar como hecha: "))
+            marcar_hecha(l)
+        except ValueError:
+            print("Eso no es un numero")
     elif x == "4":
-        d = int(input("Que tarea borramos? "))
-        borrar_tarea(d)
+        try:
+            d = int(input("Que tarea borramos? "))
+            borrar_tarea(d)
+        except ValueError:
+            print("Eso no es un numero")
     else:
         print("Esa no es una tarea")
