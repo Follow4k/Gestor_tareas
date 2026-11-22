@@ -12,16 +12,6 @@ hecha INTEGER
 """)
 conexion.commit()
 
-# cursor.execute(
-#     "INSERT INTO tareas (descripcion, hecha) VALUES (?, ?)", ("Tomar 2 litros de agua", 0))
-
-# conexion.commit()
-
-# cursor.execute("SELECT * FROM tareas")
-# resultados = cursor.fetchall()
-# print(resultados)
-
-
 def agregar_tarea(tarea):
     cursor.execute(
         "INSERT INTO tareas (descripcion, hecha) VALUES (?, ?)", (tarea, 0))
@@ -54,13 +44,12 @@ def borrar_tarea(id):
 
 # borrar_tarea(1)
 
-x = ""
-while x != "salir":
+while True:
     print("1. Agregar tareas", "2. Ver tareas",
           "3. Marcar como hecha", "4. Borrar tarea", "5. Salir")
     x = input("Que necesita hacer? ")
 
-    if x.lower() == "salir":
+    if x == "5" or x.lower() == "salir":
         break
     elif x == "1":
         y = input("Que tarea le gustaria agregar: ")
