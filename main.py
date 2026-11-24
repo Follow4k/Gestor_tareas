@@ -33,6 +33,7 @@ def ver_tareas():
 def marcar_hecha(id):
     cursor.execute("UPDATE tareas SET hecha = 1 WHERE id = ?", (id,))
     conexion.commit()
+    return cursor.rowcount
 
 
 # marcar_hecha(2)
@@ -40,7 +41,7 @@ def marcar_hecha(id):
 def borrar_tarea(id):
     cursor.execute("DELETE FROM tareas WHERE id = ?", (id,))
     conexion.commit()
-
+    return cursor.rowcount
 
 # borrar_tarea(1)
 
@@ -58,14 +59,22 @@ while True:
         ver_tareas()
     elif x == "3":
         try:
-            l = int(input("Que tarea quiere marcar como hecha: "))
-            marcar_hecha(l)
+            id_tareas = int(input("Que tarea quiere marcar como hecha: "))
+            modificadas = marcar_hecha(id_tareas)
+            if modificadas == 0:
+                print("La tarea no existe")
+            else:
+                print("Se marco bien")
         except ValueError:
             print("Eso no es un numero")
     elif x == "4":
         try:
             d = int(input("Que tarea borramos? "))
-            borrar_tarea(d)
+            modificadas = borrar_tarea(d)
+            if modificadas == 0:
+                print("La tarea no existe")
+            else:
+                print("Se borro bien")
         except ValueError:
             print("Eso no es un numero")
     else:
