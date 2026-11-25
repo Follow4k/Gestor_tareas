@@ -1,7 +1,7 @@
 import sqlite3
 
 from fastapi import FastAPI, HTTPException #HTTP devuelve errores (404, 500,etc)
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 app = FastAPI()
 
@@ -10,8 +10,7 @@ DB = "tareas.db"
 
 #Modelo: que datos tiene que mandar quien crea una tarea
 class TareaNueva(BaseModel):
-    descripcion: str
-
+    descripcion: str = Field(min_length=1, max_length=100)
 
 #Funciones auxiliares (para no repetir codigo)
 def conectar():
