@@ -17,6 +17,19 @@ class TareaNueva(BaseModel):
 def conectar():
     return sqlite3.connect(DB)
 
+def crear_tabla():
+    conexion = conectar()
+    cursor = conexion.cursor()
+    cursor.execute("""
+    CREATE TABLE IF NOT EXISTS tareas(
+    id INTEGER PRIMARY KEY,
+    descripcion TEXT,
+    hecha INTEGER
+    )
+    """)
+    conexion.commit()
+    conexion.close()
+crear_tabla() 
 
 def fila_a_dict(fila):
     #Convierte una tupla como (1, "Comprar pan", 0) en un diccionario con claves
