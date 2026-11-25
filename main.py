@@ -53,8 +53,12 @@ while True:
     if x == "5" or x.lower() == "salir":
         break
     elif x == "1":
-        y = input("Que tarea le gustaria agregar: ")
-        agregar_tarea(y)
+        y = input("Que tarea le gustaria agregar: ").strip()
+        if y == "":
+            print("La tarea no puede estar vacia")
+        else:            
+            agregar_tarea(y)
+            print("Se agrego la tarea")
     elif x == "2":
         ver_tareas()
     elif x == "3":
@@ -66,7 +70,7 @@ while True:
             else:
                 print("Se marco bien")
         except ValueError:
-            print("Eso no es un numero")
+            print("Eso no es un numero")        
     elif x == "4":
         try:
             d = int(input("Que tarea borramos? "))
