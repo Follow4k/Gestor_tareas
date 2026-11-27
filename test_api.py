@@ -51,3 +51,18 @@ def test_crear_tarea_muy_larga_es_rechazada(cliente):
     respuesta = cliente.post("/tareas", json={"descripcion": "a" * 101})
 
     assert respuesta.status_code == 422
+
+
+def test_crear_tarea_solo_espacios_es_rechazada(cliente):
+    respuesta = cliente.post("/tareas", json={"descripcion": "   "})
+
+    assert respuesta.status_code == 422
+
+
+def test_crear_tarea_sin_espacios_responde_201(cliente):
+    respuesta = cliente.post("/tareas", json={"descripcion": "        comprar pan       "})
+
+    assert respuesta.status_code == 201
+    datos = respuesta.json()
+    assert datos["descripcion"] == "comprar pan"
+    assert datos["hecha"] == 0
